@@ -6,6 +6,7 @@ const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0b82w.Dlcjk52uyiKmBLXlCpucxEToFdI';
 //Variables
 let pf = "%"
 let info = "**INFO > **"
+let rpsSay = "You played: " + user + " , the bot played " + bot "."
 
 //Bot Initiation
 bot.login(token);
@@ -30,7 +31,9 @@ function rps (userInput) {
         break
     }
     if (user === "ROCK") {
-        if (bot === "ROCK") return ["LOLOL IT WAS A TIE XD, You played: " + user + " , the bot played " + bot "."]
+        if (bot === "ROCK") return ["LOLOL IT WAS A TIE XD," + rpsSay]
+        if (bot === "PAPER") return ["WTF HOW DID YOU WIN" + rpsSay]
+        if (bot === "SCISSORS") return ["LMAO YOU GOT BEAT BY A BOT" + rpsSay]
     }
 }
 
