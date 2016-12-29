@@ -3,10 +3,10 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0b82w.Dlcjk52uyiKmBLXlCpucxEToFdI';
 
-//Config Loader
-try {
-    var cfg = JSON.parse()
-}
+//Variables
+let pf = "#"
+//Bot Initiation
+bot.login(token);
 
 bot.on('ready', () => {
     console.log('I am ready!');
@@ -14,10 +14,10 @@ bot.on('ready', () => {
 });
 
 bot.on('message', message => {
-    if(message.content === 'ding') {
+    if(message.content.startsWith(pf + 'ding')) {
         message.channel.sendMessage('dong');
     }
-    if(message.content.)
+    if(message.content.startsWith(pf + 'rps') {
+        
+    })
 });
-
-bot.login(token);
