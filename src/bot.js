@@ -6,7 +6,7 @@ const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0b82w.Dlcjk52uyiKmBLXlCpucxEToFdI';
 //Variables
 let pf = "%"
 let info = "**INFO > **"
-let rpsSay = "You played: " + user + " , the bot played " + bot "."
+let rpsSay = "You played: " + user + " , the bot played " + bot + "."
 
 //Bot Initiation
 bot.login(token);
