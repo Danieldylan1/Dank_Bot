@@ -8,6 +8,9 @@ let pf = "%";
 let info = "**INFO > **";
 
 
+let pf = "%"
+let info = "**INFO > **"
+
 //Bot Initiation
 bot.login(token);
 
