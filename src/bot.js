@@ -5,7 +5,7 @@ const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0b82w.Dlcjk52uyiKmBLXlCpucxEToFdI';
 
 //Variables
 let pf = "!";
-let info = "**:exclamation: INFO > **";
+let info = "**INFO > **";
 let timer = "**:alarm_clock: TIMER > **"
 let version = 'v0.0.4'
 
@@ -53,7 +53,7 @@ function rps (userInput) {
 //Timer function, takes time in seconds and something to remind the user of
 function remindMe (time, toRemind) {
     setTimeout(function() {
-        message.channel.sendMessage(timer + "You have to " + toRemind + message.member.user + "!");
+        message.channel.sendMessage(timer + "You have to " + toRemind + ", " + message.member.user + "!");
     }, (time * 1000));
 };
 //Message Interactions
@@ -67,12 +67,21 @@ bot.on('message', message => {
     if(message.content.startsWith(pf + 'ding')) {
         message.channel.sendMessage(info + 'Dong!');
     }
+    //RPS command, currently nonfunctional
     if(message.content.startsWith(pf + 'rps')) {
         let userChoice = message.content.split(' ')
         if (userChoice[1].toUpperCase === "ROCK" || userChoice[1].toUpperCase === "PAPER" || userChoice[1].toUpperCase === "SCISSORS") {
             let results = rps(userChoice[1]);
             message.channel.sendMessage(results);
         }
+    }
+    //Timer command, takes input like so: !timer 6 walk the dog
+    if(message.content.startsWith(pf + 'timer')) {
+        let timerChoice = message.content.split(' ')
+        let time = timerChoice[1]
+        let reminder = timerChoice[2]
+        remindMe(time, reminder)
+        message.channel.sendMessage(info + 'Timer Set!')
     }
     //Kills the bot
     if(message.content.startsWith(pf + 'kill')) {
