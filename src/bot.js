@@ -53,7 +53,7 @@ function rps (userInput) {
 //Timer function, takes time in seconds and something to remind the user of
 function remindMe (time, toRemind) {
     setTimeout(function() {
-        message.channel.sendMessage(timer + "You have to " + toRemind + ", " + message.member.user + "!");
+        message.channel.sendMessage(timer + "You have to " + toRemind + ", " + message.member + "!");
     }, (time * 1000));
 };
 //Message Interactions
