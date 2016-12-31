@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0b82w.Dlcjk52uyiKmBLXlCpucxEToFdI';
 
 //Variables
-let pf = "%";
+let pf = "!";
 let info = "**:exclamation: INFO > **";
 let timer = "**:alarm_clock: TIMER > **"
 let version = 'v0.0.4'
@@ -80,7 +80,8 @@ bot.on('message', message => {
         bot.destroy()
     }
     //If roblox is in a message, bot replies accordingly
-    if(message.content.toUpperCase.includes('ROBLOX')) {
+    upCaseMessage = message.content.toUpperCase
+    if(upCaseMessage.includes('ROBLOX')) {
         message.channel.sendMessage(info + 'Ew, are you six years old?');
     }
 });
