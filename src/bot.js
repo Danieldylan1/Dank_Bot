@@ -1,11 +1,11 @@
 //Import Reqs.
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0b82w.Dlcjk52uyiKmBLXlCpucxEToFdI';
+const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0lSgQ.rk8DS58g5ZKhf6hfV9BwQcDMuc0';
 
 //Variables
-let pf = "!";
-let info = "**INFO > **";
+let pf = "!"
+let info = "**INFO > **"
 let alert = "**:alarm_clock: TIMER > **"
 let version = 'v0.0.4'
 
@@ -50,8 +50,6 @@ function rps (userInput) {
         if (bot === "SCISSORS") return ["LOLOL IT WAS A TIE XD" + rpsSay]
     }
 }
-//Timer function, takes time in seconds and something to remind the user of
-let timerMessage = ''
 
 //Message Interactions
 bot.on('ready', () => {
