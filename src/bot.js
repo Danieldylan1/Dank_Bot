@@ -39,6 +39,16 @@ function rps (userInput) {
         if (bot === "PAPER") return ["WTF HOW DID YOU WIN" + rpsSay]
         if (bot === "SCISSORS") return ["LMAO YOU GOT BEAT BY A BOT" + rpsSay]
     }
+    if (user === "PAPER") {
+        if (bot === "ROCK") return ["WTF HOW DID YOU WIN" + rpsSay]
+        if (bot === "PAPER") return ["LOLOL IT WAS A TIE XD" + rpsSay]
+        if (bot === "SCISSORS") return ["LMAO YOU GOT BEAT BY A BOT" + rpsSay]
+    }
+    if (user === "SCISSORS") {
+        if (bot === "ROCK") return ["LMAO YOU GOT BEAT BY A BOT" + rpsSay]
+        if (bot === "PAPER") return ["WTF HOW DID YOU WIN" + rpsSay]
+        if (bot === "SCISSORS") return ["LOLOL IT WAS A TIE XD" + rpsSay]
+    }
 }
 
 //Message Interactions
@@ -50,5 +60,8 @@ bot.on('ready', () => {
 bot.on('message', message => {
     if(message.content.startsWith(pf + 'ding')) {
         message.channel.sendMessage(info + 'Dong!');
+    }
+    if(message.content.includes('aidan')) {
+        message.channel.sendMessage(info + 'Oh...');
     }
 });
