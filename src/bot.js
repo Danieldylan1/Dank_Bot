@@ -80,7 +80,7 @@ bot.on('message', message => {
         let timerMessage = message.author
         function remindMe (time, toRemind) {
             setTimeout(function() {
-                message.channel.sendMessage alert + "You have to " + toRemind + ", " + timerMessage + "!"
+                message.channel.sendMessage(alert + "You have to " + toRemind + ", " + timerMessage + "!")
             }, (time * 1000));
         };
         remindMe(time, reminder)
