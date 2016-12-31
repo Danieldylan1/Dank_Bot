@@ -58,7 +58,7 @@ bot.on('message', message => {
     if(message.content.startsWith(pf + 'ding')) {
         message.channel.sendMessage(info + 'Dong!');
     }
-    if(message.content.includes('aidan')) {
-        message.channel.sendMessage(info + 'Oh...');
+    if(message.content.includes('roblox' || 'Roblox' || 'ROBLOX')) {
+        message.channel.sendMessage(info + 'Ew, are you six years old?');
     }
 });
