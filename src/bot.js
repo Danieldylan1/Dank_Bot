@@ -80,8 +80,7 @@ bot.on('message', message => {
         bot.destroy()
     }
     //If roblox is in a message, bot replies accordingly
-    upCaseMessage = message.content.toUpperCase
-    if(upCaseMessage.includes('ROBLOX')) {
+    if(message.content.toUpperCase().includes('ROBLOX')) {
         message.channel.sendMessage(info + 'Ew, are you six years old?');
     }
 });
