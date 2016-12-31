@@ -55,7 +55,7 @@ function timer (time, toRemind) {
     setTimeout(function() {
         message.channel.sendMessage(timer + "You have to " + toRemind + message.member.user + "!");
     }, (time * 1000));
-}
+};
 //Message Interactions
 bot.on('ready', () => {
     console.log('Bot is online!');
