@@ -7,58 +7,59 @@ const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0lU6g.oxH-8wMHLEvtb8P0UenrtfEXU_k';
 let pf = "!"
 let info = "**INFO > **"
 let alert = "**:alarm_clock: TIMER > **"
-let version = "v0.0.4"
+let warning = "**:warning: WARN > **"
+let version = "v0.1.2"
 
 //Bot Initiation
 bot.login(token);
 
 //Functions
-//Random number generator, generates number between two numbers, inclusive
-function randNum (min, max) {
-    return Math.floor(Math.random * (max - min ) + min)
+//Random integer function for rps
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 //Rock Paper Scissors function, works as you would expect a rock paper scissors game to work
-function rps (userInput) {
-    let botChoice = randNum(1,3)
-    user = userInput.toUpperCase
+//userInput must be a string
+function rps(userInput) {
+    let botNum = getRndInteger(1,3)
+    user = userInput.toUpperCase()
 
-    switch (bot) {
+    switch (botNum) {
     case 1:
-        bot = "ROCK"
+        botRpsChoice = "ROCK"
         break
     case 2:
-        bot = "PAPER"
+        botRpsChoice = "PAPER"
         break
     case 3:
-        bot = "SCISSORS"
+        botRpsChoice = "SCISSORS"
         break
     }
-    let rpsSay = "You played: " + user + " , the bot played " + bot + "."
+    let rpsSay = "You played: " + user.toLowerCase() + ", the bot played " + botRpsChoice.toLowerCase() + "."
     if (user === "ROCK") {
-        if (bot === "ROCK") return ["LOLOL IT WAS A TIE XD," + rpsSay]
-        if (bot === "PAPER") return ["WTF HOW DID YOU WIN" + rpsSay]
-        if (bot === "SCISSORS") return ["LMAO YOU GOT BEAT BY A BOT" + rpsSay]
+        if (botRpsChoice === "ROCK") return ["LOLOL IT WAS A TIE XD, " + rpsSay]
+        if (botRpsChoice === "PAPER") return ["LMAO YOU GOT BEAT BY A BOT, " + rpsSay]
+        if (botRpsChoice === "SCISSORS") return ["WTF HOW DID YOU WIN, " + rpsSay]
     }
     if (user === "PAPER") {
-        if (bot === "ROCK") return ["WTF HOW DID YOU WIN" + rpsSay]
-        if (bot === "PAPER") return ["LOLOL IT WAS A TIE XD" + rpsSay]
-        if (bot === "SCISSORS") return ["LMAO YOU GOT BEAT BY A BOT" + rpsSay]
+        if (botRpsChoice === "ROCK") return ["WTF HOW DID YOU WIN, " + rpsSay]
+        if (botRpsChoice === "PAPER") return ["LOLOL IT WAS A TIE XD, " + rpsSay]
+        if (botRpsChoice === "SCISSORS") return ["LMAO YOU GOT BEAT BY A BOT, " + rpsSay]
     }
     if (user === "SCISSORS") {
-        if (bot === "ROCK") return ["LMAO YOU GOT BEAT BY A BOT" + rpsSay]
-        if (bot === "PAPER") return ["WTF HOW DID YOU WIN" + rpsSay]
-        if (bot === "SCISSORS") return ["LOLOL IT WAS A TIE XD" + rpsSay]
+        if (botRpsChoice === "ROCK") return ["LMAO YOU GOT BEAT BY A BOT, " + rpsSay]
+        if (botRpsChoice === "PAPER") return ["WTF HOW DID YOU WIN, " + rpsSay]
+        if (botRpsChoice === "SCISSORS") return ["LOLOL IT WAS A TIE XD, " + rpsSay]
     }
 }
 
 //Message Interactions
 bot.on('ready', () => {
-    console.log('Bot is online!');
-    bot.user.setGame(version + " - By Jason L. Hello")
+    console.log('Awaiting your orders!');
+    bot.user.setGame(version + " - By Jason L.")
 });
 
 bot.on('message', message => {
-    console.log("I see")
     //Ding dong message to test
     if(message.content.startsWith(pf + 'ding')) {
         message.channel.sendMessage(info + 'Dong!');
@@ -66,9 +67,12 @@ bot.on('message', message => {
     //RPS command, currently nonfunctional
     if(message.content.startsWith(pf + 'rps')) {
         let userChoice = message.content.split(' ')
-        if (userChoice[1].toUpperCase === "ROCK" || userChoice[1].toUpperCase === "PAPER" || userChoice[1].toUpperCase === "SCISSORS") {
-            let results = rps(userChoice[1]);
+        let rpsUser = userChoice[1].toUpperCase()
+        if (rpsUser === 'ROCK' || rpsUser === 'PAPER' || rpsUser === 'SCISSORS') {
+            let results = rps(rpsUser);
             message.channel.sendMessage(results);
+        }    else {
+            message.channel.sendMessage(warning + "Did you use the format !rps rock, paper, or scissors?");
         }
     }
     //Timer command, takes input like so: !timer 6 walk the dog
@@ -79,7 +83,7 @@ bot.on('message', message => {
         let timerMessage = message.author
         function remindMe (time, toRemind) {
             setTimeout(function() {
-                message.channel.sendMessage(alert + "You have to " + toRemind + ", " + timerMessage + "!")
+                message.channel.sendMessage(alert + "You have to " + toRemind.join(' ') + ", " + timerMessage + "!")
             }, (time * 1000));
         };
         remindMe(time, reminder)
@@ -87,7 +91,7 @@ bot.on('message', message => {
     }
     //Kills the bot
     if(message.content.startsWith(pf + 'kill')) {
-        message.channel.sendMessage(info + 'Drinking Bleach...');
+        message.channel.sendMessage(info + 'Shutting down...');
         bot.destroy()
     }
     //If roblox is in a message, bot replies accordingly
