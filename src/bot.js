@@ -1,13 +1,13 @@
 //Import Reqs.
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0lSgQ.rk8DS58g5ZKhf6hfV9BwQcDMuc0';
+const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0lU6g.oxH-8wMHLEvtb8P0UenrtfEXU_k';
 
 //Variables
 let pf = "!"
 let info = "**INFO > **"
 let alert = "**:alarm_clock: TIMER > **"
-let version = 'v0.0.4'
+let version = "v0.0.4"
 
 //Bot Initiation
 bot.login(token);
@@ -54,10 +54,11 @@ function rps (userInput) {
 //Message Interactions
 bot.on('ready', () => {
     console.log('Bot is online!');
-    bot.user.setGame(version + " - By Jason L.")
+    bot.user.setGame(version + " - By Jason L. Hello")
 });
 
 bot.on('message', message => {
+    console.log("I see")
     //Ding dong message to test
     if(message.content.startsWith(pf + 'ding')) {
         message.channel.sendMessage(info + 'Dong!');
@@ -74,7 +75,7 @@ bot.on('message', message => {
     if(message.content.startsWith(pf + 'timer')) {
         let timerChoice = message.content.split(' ')
         let time = timerChoice[1]
-        let reminder = timerChoice.substring(2)
+        let reminder = timerChoice.slice(2, timerChoice.length)
         let timerMessage = message.author
         function remindMe (time, toRemind) {
             setTimeout(function() {
