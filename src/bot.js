@@ -6,7 +6,7 @@ const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0b82w.Dlcjk52uyiKmBLXlCpucxEToFdI';
 //Variables
 let pf = "!";
 let info = "**INFO > **";
-let timer = "**:alarm_clock: TIMER > **"
+let alert = "**:alarm_clock: TIMER > **"
 let version = 'v0.0.4'
 
 //Bot Initiation
@@ -53,7 +53,7 @@ function rps (userInput) {
 //Timer function, takes time in seconds and something to remind the user of
 function remindMe (time, toRemind) {
     setTimeout(function() {
-        message.channel.sendMessage(timer + "You have to " + toRemind + ", " + message.member + "!");
+        message.channel.sendMessage(alert + "You have to " + toRemind + ", " + message.member + "!");
     }, (time * 1000));
 };
 //Message Interactions
