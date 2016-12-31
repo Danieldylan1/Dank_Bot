@@ -6,10 +6,7 @@ const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0b82w.Dlcjk52uyiKmBLXlCpucxEToFdI';
 //Variables
 let pf = "%";
 let info = "**INFO > **";
-
-
-let pf = "%"
-let info = "**INFO > **"
+let version = 'v0.0.3'
 
 //Bot Initiation
 bot.login(token);
@@ -54,7 +51,7 @@ function rps (userInput) {
 //Message Interactions
 bot.on('ready', () => {
     console.log('Bot is online!');
-    bot.user.setGame("v0.0.2 - By Jason L.")
+    bot.user.setGame(version + " - By Jason L.")
 });
 
 bot.on('message', message => {
