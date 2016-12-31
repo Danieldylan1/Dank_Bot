@@ -76,7 +76,7 @@ bot.on('message', message => {
     if(message.content.startsWith(pf + 'timer')) {
         let timerChoice = message.content.split(' ')
         let time = timerChoice[1]
-        let reminder = timerChoice[2:]
+        let reminder = timerChoice.substring(2)
         let timerMessage = message.author
         function remindMe (time, toRemind) {
             setTimeout(function() {
