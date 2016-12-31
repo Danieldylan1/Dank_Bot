@@ -4,9 +4,9 @@ const bot = new Discord.Client();
 const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0b82w.Dlcjk52uyiKmBLXlCpucxEToFdI';
 
 //Variables
-let pf = "%"
-let info = "**INFO > **"
-let rpsSay = "You played: " + user + " , the bot played " + bot "."
+let pf = "%";
+let info = "**INFO > **";
+
 
 //Bot Initiation
 bot.login(token);
@@ -30,6 +30,7 @@ function rps (userInput) {
         bot = "SCISSORS"
         break
     }
+    let rpsSay = "You played: " + user + " , the bot played " + bot + "."
     if (user === "ROCK") {
         if (bot === "ROCK") return ["LOLOL IT WAS A TIE XD," + rpsSay]
         if (bot === "PAPER") return ["WTF HOW DID YOU WIN" + rpsSay]
@@ -40,7 +41,7 @@ function rps (userInput) {
 //Message Interactions
 bot.on('ready', () => {
     console.log('Bot is online!');
-    bot.user.setGame("v0.0.1 - By Jason L.")
+    bot.user.setGame("v0.0.2 - By Jason L.")
 });
 
 bot.on('message', message => {
