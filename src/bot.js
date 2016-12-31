@@ -51,9 +51,10 @@ function rps (userInput) {
     }
 }
 //Timer function, takes time in seconds and something to remind the user of
+let timerMessage = ''
 function remindMe (time, toRemind) {
     setTimeout(function() {
-        message.channel.sendMessage(alert + "You have to " + toRemind + ", " + message.author + "!");
+        message.channel.sendMessage(alert + "You have to " + toRemind + ", " + timerMessage + "!");
     }, (time * 1000));
 };
 //Message Interactions
@@ -80,6 +81,7 @@ bot.on('message', message => {
         let timerChoice = message.content.split(' ')
         let time = timerChoice[1]
         let reminder = timerChoice[2]
+        let timerMessage = message.author
         remindMe(time, reminder)
         message.channel.sendMessage(info + 'Timer Set!')
     }
