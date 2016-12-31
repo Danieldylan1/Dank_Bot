@@ -58,6 +58,10 @@ bot.on('message', message => {
     if(message.content.startsWith(pf + 'ding')) {
         message.channel.sendMessage(info + 'Dong!');
     }
+    if(message.content.startsWith(pf + 'kill')) {
+        message.channel.sendMessage(info + 'Drinking Bleach...');
+        bot.destroy()
+    }
     if(message.content.includes('roblox' || 'Roblox' || 'ROBLOX')) {
         message.channel.sendMessage(info + 'Ew, are you six years old?');
     }
