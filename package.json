@@ -1,0 +1,24 @@
+{
+  "name": "dank_bot",
+  "version": "0.1.2",
+  "description": "Discord Bot!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Danieldylan1/Dank_Bot.git"
+  },
+  "author": "Jason Liu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Danieldylan1/Dank_Bot/issues"
+  },
+  "homepage": "https://github.com/Danieldylan1/Dank_Bot#readme",
+  "dependencies": {
+    "discord.js": "^10.0.1",
+    "erlpack": "github:hammerandchisel/erlpack",
+    "uws": "^0.12.0"
+  }
+}
