@@ -1,7 +1,7 @@
 //Import Reqs.
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0lU6g.oxH-8wMHLEvtb8P0UenrtfEXU_k';
+const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0w7_Q.jljSppixn_q1eIOSbvhkHcm5kgo';
 
 //Variables
 let pf = "!"
