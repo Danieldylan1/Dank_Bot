@@ -1,6 +1,5 @@
-//Import Reqs.
+//Stuff
 const Discord = require('discord.js');
-const bot = new Discord.Client();
 const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0w7_Q.jljSppixn_q1eIOSbvhkHcm5kgo';
 
 //Variables
@@ -9,6 +8,9 @@ let info = "**INFO > **"
 let alert = "**:alarm_clock: TIMER > **"
 let warning = "**:warning: WARN > **"
 let version = "v0.1.2"
+
+//Create Objects
+const bot = new Discord.Client()
 
 //Bot Initiation
 bot.login(token);
@@ -56,12 +58,14 @@ function rps(userInput) {
 //Message Interactions
 bot.on('ready', () => {
     console.log('Awaiting your orders!');
-    bot.user.setGame(version + " - By Jason L.")
+    bot.user.setGame(version + " - By Jason L. Hello why this not werk")
 });
 
 bot.on('message', message => {
+    console.log("Hi there!")
     //Ding dong message to test
     if(message.content.startsWith(pf + 'ding')) {
+        console.log("Hola!")
         message.channel.sendMessage(info + 'Dong!');
     }
     //RPS command, currently nonfunctional
