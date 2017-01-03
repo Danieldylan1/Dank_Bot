@@ -71,6 +71,9 @@ bot.on('message', message => {
     //RPS command, currently nonfunctional
     if(message.content.startsWith(pf + 'rps')) {
         let userChoice = message.content.split(' ')
+        if (rpsUser === undefined) {
+            message.channel.sendMessage(warning + "There is no argument given!")
+        }
         let rpsUser = userChoice[1].toUpperCase()
         if (rpsUser === 'ROCK' || rpsUser === 'PAPER' || rpsUser === 'SCISSORS') {
             let results = rps(rpsUser);
