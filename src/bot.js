@@ -1,6 +1,6 @@
 //Stuff
 const Discord = require('discord.js');
-const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C0w7_Q.jljSppixn_q1eIOSbvhkHcm5kgo';
+const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C03QLg.sjoucZVDI-uNdKi7gmBdY9QaXA4';
 
 //Variables
 let pf = "!"
@@ -58,29 +58,30 @@ function rps(userInput) {
 //Message Interactions
 bot.on('ready', () => {
     console.log('Awaiting your orders!');
-    bot.user.setGame(version + " - By Jason L. Hello why this not werk")
+    bot.user.setGame(version + " - By Jason L.")
 });
 
 bot.on('message', message => {
-    console.log("Hi there!")
     //Ding dong message to test
     if(message.content.startsWith(pf + 'ding')) {
-        console.log("Hola!")
         message.channel.sendMessage(info + 'Dong!');
     }
     //RPS command, currently nonfunctional
     if(message.content.startsWith(pf + 'rps')) {
         let userChoice = message.content.split(' ')
+        let rpsUser = userChoice[1]
         if (rpsUser === undefined) {
             message.channel.sendMessage(warning + "There is no argument given!")
         }
-        let rpsUser = userChoice[1].toUpperCase()
+        else {
+        rpsUser = rpsUser.toUpperCase()
         if (rpsUser === 'ROCK' || rpsUser === 'PAPER' || rpsUser === 'SCISSORS') {
             let results = rps(rpsUser);
             message.channel.sendMessage(results);
         }    else {
             message.channel.sendMessage(warning + "Did you use the format !rps rock, paper, or scissors?");
         }
+    }
     }
     //Timer command, takes input like so: !timer 6 walk the dog
     if(message.content.startsWith(pf + 'timer')) {
