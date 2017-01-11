@@ -1,19 +1,26 @@
-//Stuff
+//Import Requirements
 const Discord = require('discord.js');
-const token = 'MjY0MTIwNDYyMjQwNTE0MDUw.C03QLg.sjoucZVDI-uNdKi7gmBdY9QaXA4';
+const fs = require('fs');
+const path = require('path')
 
 //Variables
 let pf = "!"
 let info = "**INFO > **"
 let alert = "**:alarm_clock: TIMER > **"
 let warning = "**:warning: WARN > **"
-let version = "v0.1.2"
+
+//Load Files
+try {
+  var cfg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'config', 'config.json')), 'utf8')
+} catch (err) {
+  if (err) throw err
+}
 
 //Create Objects
 const bot = new Discord.Client()
 
 //Bot Initiation
-bot.login(token);
+bot.login(cfg.bot_token);
 
 //Functions
 //Random integer function for rps
@@ -55,12 +62,13 @@ function rps(userInput) {
     }
 }
 
-//Message Interactions
+//Start the bot!
 bot.on('ready', () => {
     console.log('Awaiting your orders!');
-    bot.user.setGame(version + " - By Jason L.")
+    bot.user.setGame(cfg.version + " - By Jason L.")
 });
 
+//Message Interactions
 bot.on('message', message => {
     //Ding dong message to test
     if(message.content.startsWith(pf + 'ding')) {
@@ -77,7 +85,7 @@ bot.on('message', message => {
         rpsUser = rpsUser.toUpperCase()
         if (rpsUser === 'ROCK' || rpsUser === 'PAPER' || rpsUser === 'SCISSORS') {
             let results = rps(rpsUser);
-            message.channel.sendMessage(results);
+            message.channel.sendMessage(info + results);
         }    else {
             message.channel.sendMessage(warning + "Did you use the format !rps rock, paper, or scissors?");
         }
