@@ -10,11 +10,8 @@ let alert = "**:alarm_clock: TIMER > **"
 let warning = "**:warning: WARN > **"
 
 //Load Files
-try {
-  var cfg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'config', 'config.json')), 'utf8')
-} catch (err) {
-  if (err) throw err
-}
+var cfg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'config', 'config.json')), 'utf8')
+var rep_file = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'rep.json')), 'utf8')
 
 //Create Objects
 const bot = new Discord.Client()
@@ -61,6 +58,12 @@ function rps(userInput) {
         if (botRpsChoice === "SCISSORS") return ["LOLOL IT WAS A TIE XD, " + rpsSay]
     }
 }
+function rep(username) {
+    if(username === message.author.username) {
+        massage.channel.sendMessage(warn + "You cannot give reputation to yourself!")
+    }
+
+}
 
 //Start the bot!
 bot.on('ready', () => {
@@ -104,6 +107,12 @@ bot.on('message', message => {
         };
         remindMe(time, reminder)
         message.channel.sendMessage(info + 'Timer Set!')
+    }
+    //Rep command, give 1 rep to the user provided
+    if(message.content.startsWith(pf + 'rep')) {
+        let repArgs = message.content.split(' ')
+        let receiver = repArgs[1]
+        console.log(message.guild.fetchUser(receiver))
     }
     //Kills the bot
     if(message.content.startsWith(pf + 'kill')) {
