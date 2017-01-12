@@ -7,11 +7,11 @@ const path = require('path')
 let pf = "!"
 let info = "**INFO > **"
 let alert = "**:alarm_clock: TIMER > **"
-let warning = "**:warning: WARN > **"
+let warning = "**:warning: WARNING > **"
 
 //Load Files
-var cfg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'config', 'config.json')), 'utf8')
-var rep_file = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'rep.json')), 'utf8')
+let cfg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'config', 'config.json')), 'utf8')
+let rep_file = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'rep.json')), 'utf8')
 
 //Create Objects
 const bot = new Discord.Client()
@@ -58,11 +58,14 @@ function rps(userInput) {
         if (botRpsChoice === "SCISSORS") return ["LOLOL IT WAS A TIE XD, " + rpsSay]
     }
 }
-function rep(username) {
-    if(username === message.author.username) {
-        massage.channel.sendMessage(warn + "You cannot give reputation to yourself!")
+function rep(userid, repAmt) {
+    if(username === message.author.id) {
+        message.channel.sendMessage(warning + "You cannot give reputation to yourself!")
     }
-
+    else {
+        let jsonId = JSON.stringify(userid)
+        let jsonRep = JSON.stringify(repAmt)
+    }
 }
 
 //Start the bot!
