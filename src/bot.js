@@ -66,7 +66,12 @@ function rep(userid, repAmt) {
         let jsonId = JSON.stringify(userid)
         let jsonRep = JSON.stringify(repAmt)
         let repFile = fs.readFileSync("rep.json")
-        if
+        if (repFile.userid != undefined) {
+
+        }
+        else {
+
+        }
     }
 }
 
