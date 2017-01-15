@@ -58,22 +58,6 @@ function rps(userInput) {
         if (botRpsChoice === "SCISSORS") return ["LOLOL IT WAS A TIE XD, " + rpsSay]
     }
 }
-function rep(userid, repAmt) {
-    if(username === message.author.id) {
-        message.channel.sendMessage(warning + "You cannot give reputation to yourself!")
-    }
-    else {
-        let jsonId = JSON.stringify(userid)
-        let jsonRep = JSON.stringify(repAmt)
-        let repFile = fs.readFileSync("rep.json")
-        if (repFile.userid != undefined) {
-
-        }
-        else {
-
-        }
-    }
-}
 
 //Start the bot!
 bot.on('ready', () => {
@@ -103,7 +87,7 @@ bot.on('message', message => {
             message.channel.sendMessage(warning + "Did you use the format !rps rock, paper, or scissors?");
         }
     }
-    }
+}
     //Timer command, takes input like so: !timer 6 walk the dog
     if(message.content.startsWith(pf + 'timer')) {
         let timerChoice = message.content.split(' ')
@@ -118,12 +102,7 @@ bot.on('message', message => {
         remindMe(time, reminder)
         message.channel.sendMessage(info + 'Timer Set!')
     }
-    //Rep command, give 1 rep to the user provided
-    if(message.content.startsWith(pf + 'rep')) {
-        let repArgs = message.content.split(' ')
-        let receiver = repArgs[1]
-        console.log(message.guild.fetchUser(receiver))
-    }
+
     //Kills the bot
     if(message.content.startsWith(pf + 'kill')) {
         message.channel.sendMessage(info + 'Shutting down...');
