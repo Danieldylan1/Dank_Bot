@@ -1,6 +1,7 @@
 {
-    "rps":"",
-    "ding":"",
-    "timer":"",
-    "kill":"What the hell do you expect from this?"
+    "rps":"Rock Paper Scissors command, enter in format !rps [rock, paper, scissors]",
+    "ding":"Testing command, returns 'Dong!'",
+    "timer":"Simple timer command, enter in format !timer [time in seconds] [thing to remind]",
+    "kill":"What the hell do you expect from this?",
+    "help":"Gee, I wonder"
 }

@@ -11,7 +11,7 @@ let warning = "**:warning: WARNING > **"
 
 //Load Files
 let cfg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'config', 'config.json')), 'utf8')
-let help_file = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'help.json')), 'utf8')
+let helpFile = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'help.json')), 'utf8')
 
 //Create Objects
 const bot = new Discord.Client()
@@ -67,10 +67,12 @@ bot.on('ready', () => {
 
 //Message Interactions
 bot.on('message', message => {
+
     //Ding dong message to test
     if(message.content.startsWith(pf + 'ding')) {
         message.channel.sendMessage(info + 'Dong!');
     }
+
     //RPS command, currently nonfunctional
     if(message.content.startsWith(pf + 'rps')) {
         let userChoice = message.content.split(' ')
@@ -85,9 +87,10 @@ bot.on('message', message => {
             message.channel.sendMessage(info + results);
         }    else {
             message.channel.sendMessage(warning + "Did you use the format !rps rock, paper, or scissors?");
+            }
         }
     }
-}
+
     //Timer command, takes input like so: !timer 6 walk the dog
     if(message.content.startsWith(pf + 'timer')) {
         let timerChoice = message.content.split(' ')
@@ -101,6 +104,28 @@ bot.on('message', message => {
         };
         remindMe(time, reminder)
         message.channel.sendMessage(info + 'Timer Set!')
+    }
+
+    //Help command
+    if(message.content.startsWith(pf + 'help')) {
+        let userHelp = message.content.split(' ')
+
+        if (userHelp[1] != undefined) {
+            if (helpFile.userHelp[1] == undefined) {
+                message.channel.sendMessage(warning + "This command is not in the help file, see an admin or fuck off.")
+            }
+            else {
+                message.channel.sendMessage(info + " " + pf + (userHelp[1].toUpperCase()).toLowerCase() + ": " + helpFile.userHelp[1].toUpperCase())
+            }
+        }
+        else {
+            message.channel.sendMessage(info + "**Command List**
+            !help
+            !rps
+            !timer
+            !ding
+            !kill")
+        }
     }
 
     //Kills the bot
