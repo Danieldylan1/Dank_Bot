@@ -67,13 +67,13 @@ bot.on('ready', () => {
 
 //Message Interactions
 bot.on('message', message => {
-
+    if (message.author.bot) return
     //Ding dong message to test
     if(message.content.startsWith(pf + 'ding')) {
         message.channel.sendMessage(info + 'Dong!');
     }
 
-    //RPS command, currently nonfunctional
+    //RPS command
     if(message.content.startsWith(pf + 'rps')) {
         let userChoice = message.content.split(' ')
         let rpsUser = userChoice[1]
@@ -86,7 +86,7 @@ bot.on('message', message => {
             let results = rps(rpsUser);
             message.channel.sendMessage(info + results);
         }    else {
-            message.channel.sendMessage(warning + "Did you use the format !rps rock, paper, or scissors?");
+            message.channel.sendMessage(warning + "Did you use the format !rps [rock, paper, or scissors]?");
             }
         }
     }
@@ -108,24 +108,7 @@ bot.on('message', message => {
 
     //Help command
     if(message.content.startsWith(pf + 'help')) {
-        let userHelp = message.content.split(' ')
-
-        if (userHelp[1] != undefined) {
-            if (helpFile.userHelp[1] == undefined) {
-                message.channel.sendMessage(warning + "This command is not in the help file, see an admin or fuck off.")
-            }
-            else {
-                message.channel.sendMessage(info + " " + pf + (userHelp[1].toUpperCase()).toLowerCase() + ": " + helpFile.userHelp[1].toUpperCase())
-            }
-        }
-        else {
-            message.channel.sendMessage(info + "**Command List**
-            !help
-            !rps
-            !timer
-            !ding
-            !kill")
-        }
+        let helpMsg = ""
     }
 
     //Kills the bot
