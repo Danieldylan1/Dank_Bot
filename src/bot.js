@@ -12,6 +12,7 @@ let warning = "**:warning: WARNING > **"
 //Load Files
 let cfg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'config', 'config.json')), 'utf8')
 let rep_file = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'rep.json')), 'utf8')
+let help_file = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'help.json')), 'utf8')
 
 //Create Objects
 const bot = new Discord.Client()
