@@ -1,3 +1,32 @@
 {
-    
+    "help": {
+        "info": {
+            "format":"help",
+            "desc":"Really, what do you expect?"
+        }
+    },
+    "ding": {
+        "info": {
+            "format":"ding",
+            "desc": "Testing command, returns dong"
+        }
+    },
+    "timer": {
+        "info": {
+            "format":"timer",
+            "desc": "Timer command, use !timer [time in seconds] [thing to remind]"
+        }
+    },
+    "kill": {
+        "info": {
+            "format":"kill",
+            "desc": "Kills the bot"
+        }
+    },
+    "rps": {
+        "info": {
+            "format":"rps",
+            "desc": "Rock paper scissors, use !rps [rock, paper, or scissors]"
+        }
+    }
 }

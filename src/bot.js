@@ -108,7 +108,11 @@ bot.on('message', message => {
 
     //Help command
     if(message.content.startsWith(pf + 'help')) {
-        let helpMsg = ""
+        let helpMsg = "Help for: **All**" + "\n"
+        for(let key in helpFile) {
+            helpMsg += '**' + pf + key + '** ' + '> ' + helpFile[key].info.desc + '\n'
+        }
+        message.channel.sendMessage(helpMsg)
     }
 
     //Kills the bot
