@@ -97,6 +97,11 @@ bot.on('message', message => {
         let time = timerChoice[1]
         let reminder = timerChoice.slice(2, timerChoice.length)
         let timerMessage = message.author
+        if (time >= 120 || Number.isInteger(time) === false) {
+            message.channel.sendMessage(info + "Wrong input! *yes daddy*")
+
+        }
+        else {
         function remindMe (time, toRemind) {
             setTimeout(function() {
                 message.channel.sendMessage(alert + "You have to " + toRemind.join(' ') + ", " + timerMessage + "!")
@@ -104,6 +109,7 @@ bot.on('message', message => {
         };
         remindMe(time, reminder)
         message.channel.sendMessage(info + 'Timer Set!')
+        }
     }
 
     //Help command
