@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path')
 
 //Variables
-let pf = "!"
+let pf = "d!"
 let info = "**INFO > **"
 let alert = "**:alarm_clock: TIMER > **"
 let warning = "**:warning: WARNING > **"
@@ -97,7 +97,7 @@ bot.on('message', message => {
         let time = timerChoice[1]
         let reminder = timerChoice.slice(2, timerChoice.length)
         let timerMessage = message.author
-        if (time >= 120 || Number.isInteger(time) === false) {
+        if (time >= 120) {
             message.channel.sendMessage(info + "Wrong input! *yes daddy*")
 
         }
@@ -123,7 +123,7 @@ bot.on('message', message => {
 
     //Kills the bot
     if(message.content.startsWith(pf + 'kill')) {
-        message.channel.sendMessage(info + 'Shutting down...');
+        message.channel.sendMessage(info + 'Сука Блять Losers!');
         bot.destroy()
     }
     //If roblox is in a message, bot replies accordingly
