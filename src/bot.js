@@ -123,8 +123,17 @@ bot.on('message', message => {
 
     //Kills the bot
     if(message.content.startsWith(pf + 'kill')) {
-        message.channel.sendMessage(info + 'Сука Блять Losers!');
-        bot.destroy()
+        if(message.member.hasPermission("ADMINISTRATOR", true)) {
+            message.channel.sendMessage(info + 'Сука Блять Losers!');
+            bot.destroy()
+        }
+        else if(message.author.id === '170144638017994752') {
+            message.channel.sendMessage(info + 'Woohoo! ' + message.author + "used ADMIN OVERRIDE! It's super effective! Dank Bot fainted!")
+            bot.destroy()
+        }
+        else {
+            message.channel.sendMessage(info + 'You do not have the required permissions, ' + message.author + '! *nice try*');
+        }
     }
     //If roblox is in a message, bot replies accordingly
     if(message.content.toUpperCase().includes('ROBLOX')) {
