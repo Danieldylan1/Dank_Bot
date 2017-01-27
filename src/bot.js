@@ -5,7 +5,7 @@ const path = require('path')
 
 //Variables
 let pf = "d!"
-let info = "**INFO > **"
+let info = "**:notepad_spiral: INFO > **"
 let alert = "**:alarm_clock: TIMER > **"
 let warning = "**:warning: WARNING > **"
 
@@ -67,7 +67,9 @@ bot.on('ready', () => {
 
 //Message Interactions
 bot.on('message', message => {
+    //Make sure bot does not break itself
     if (message.author.bot) return
+
     //Ding dong message to test
     if(message.content.startsWith(pf + 'ding')) {
         message.channel.sendMessage(info + 'Dong!');
@@ -114,12 +116,20 @@ bot.on('message', message => {
 
     //Help command
     if(message.content.startsWith(pf + 'help')) {
-        let helpMsg = "Help for: **All**" + "\n"
+        let helpMsg = "Help for: **Commands**" + "\n"
         for(let key in helpFile) {
             helpMsg += '**' + pf + key + '** ' + '> ' + helpFile[key].info.desc + '\n'
         }
         message.channel.sendMessage(helpMsg)
     }
+
+    //Limited Chinese New Year Commmand
+    if(message.content.startsWith(pf + 'china')) {
+        let msg = ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:" + "\n" + "\n" + "**                   Happy Chinese New Year**" + "\n" + "\n" + ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:"
+        message.channel.sendMessage(msg)
+    }
+
+    //
 
     //Kills the bot
     if(message.content.startsWith(pf + 'kill')) {
@@ -127,8 +137,8 @@ bot.on('message', message => {
             message.channel.sendMessage(info + 'Сука Блять Losers!');
             bot.destroy()
         }
-        else if(message.author.id === '170144638017994752') {
-            message.channel.sendMessage(info + 'Woohoo! ' + message.author + "used ADMIN OVERRIDE! It's super effective! Dank Bot fainted!")
+        else if(message.author.id === '170144638017994752' || message.author.id === '97798583402631168' || message.author.id === '119495663506554880') {
+            message.channel.sendMessage(info + 'Woohoo! ' + message.author + " used ADMIN OVERRIDE! It's super effective! Dank Bot fainted!")
             bot.destroy()
         }
         else {
