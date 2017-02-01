@@ -125,7 +125,7 @@ bot.on('message', message => {
 
     //Limited Chinese New Year Commmand
     if(message.content.startsWith(pf + 'china')) {
-        let msg = ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:" + "\n" + "\n" + "**                   Happy Chinese New Year**" + "\n" + "\n" + ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:"
+        let msg = ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:" + "\n" + "\n" + "**                   Happy Chinese New Year Fags**" + "\n" + "\n" + ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:"
         message.channel.sendMessage(msg)
     }
 
@@ -137,7 +137,7 @@ bot.on('message', message => {
             message.channel.sendMessage(info + 'Сука Блять Losers!');
             bot.destroy()
         }
-        else if(message.author.id === '170144638017994752' || message.author.id === '97798583402631168' || message.author.id === '119495663506554880') {
+        else if(message.author.id === '170144638017994752' || message.author.id === '97798583402631168' || message.author.id === '119495663506554880' || message.author.id === '160895343750283264') {
             message.channel.sendMessage(info + 'Woohoo! ' + message.author + " used ADMIN OVERRIDE! It's super effective! Dank Bot fainted!")
             bot.destroy()
         }
