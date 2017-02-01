@@ -72,9 +72,6 @@ bot.on('message', message => {
     //Make sure bot does not break itself
     if (message.author.bot) return
 
-    if (message.author.id === '97798583402631168' || message.author.id === '200709999738093568') {
-        message.channel.sendMessage(info + 'How about no, fuck boy')
-    }
     //Ding dong message to test
     if(message.content.startsWith(pf + 'ding')) {
         message.channel.sendMessage(info + 'Dong!');
