@@ -3,6 +3,8 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const path = require('path')
 
+
+
 //Variables
 let pf = "d!"
 let info = "**:notepad_spiral: INFO > **"
@@ -70,6 +72,9 @@ bot.on('message', message => {
     //Make sure bot does not break itself
     if (message.author.bot) return
 
+    if (message.author.id === '97798583402631168' || message.author.id === '200709999738093568') {
+        message.channel.sendMessage(info + 'How about no, fuck boy')
+    }
     //Ding dong message to test
     if(message.content.startsWith(pf + 'ding')) {
         message.channel.sendMessage(info + 'Dong!');
@@ -99,7 +104,7 @@ bot.on('message', message => {
         let time = timerChoice[1]
         let reminder = timerChoice.slice(2, timerChoice.length)
         let timerMessage = message.author
-        if (time >= 120) {
+        if (time >= 120 || time.isInteger() === false) {
             message.channel.sendMessage(info + "Wrong input! *yes daddy*")
 
         }
@@ -137,12 +142,17 @@ bot.on('message', message => {
             message.channel.sendMessage(info + 'Сука Блять Losers!');
             bot.destroy()
         }
-        else if(message.author.id === '170144638017994752' || message.author.id === '97798583402631168' || message.author.id === '119495663506554880' || message.author.id === '160895343750283264') {
+        else if(message.author.id === '170144638017994752' || message.author.id === '119495663506554880') {
             message.channel.sendMessage(info + 'Woohoo! ' + message.author + " used ADMIN OVERRIDE! It's super effective! Dank Bot fainted!")
             bot.destroy()
         }
         else {
+            if (message.author.id === '97798583402631168' || message.author.id === '200709999738093568') {
+                message.channel.sendMessage(info + 'Fuck off aidan')
+            }
+            else {
             message.channel.sendMessage(info + 'You do not have the required permissions, ' + message.author + '! *nice try*');
+            }
         }
     }
     //If roblox is in a message, bot replies accordingly
