@@ -2,7 +2,7 @@
 const Discord = require('discord.js');
 const fs = require('fs');
 const path = require('path')
-
+const moment = require('moment')
 
 
 //Variables
@@ -29,8 +29,9 @@ function getRndInteger(min, max) {
 //Rock Paper Scissors function, works as you would expect a rock paper scissors game to work
 //userInput must be a string
 function rps(userInput) {
+    let botRpsChoice = ''
     let botNum = getRndInteger(1,3)
-    user = userInput.toUpperCase()
+    user = userInput.toUpperCase();
 
     switch (botNum) {
     case 1:
@@ -43,7 +44,7 @@ function rps(userInput) {
         botRpsChoice = "SCISSORS"
         break
     }
-    let rpsSay = "You played: " + user.toLowerCase() + ", the bot played " + botRpsChoice.toLowerCase() + "."
+    let rpsSay = "You played: " + user.toLowerCase() + ", the bot played " + botRpsChoice.toLowerCase() + ".";
     if (user === "ROCK") {
         if (botRpsChoice === "ROCK") return ["LOLOL IT WAS A TIE XD, " + rpsSay]
         if (botRpsChoice === "PAPER") return ["LMAO YOU GOT BEAT BY A BOT, " + rpsSay]
@@ -127,7 +128,7 @@ bot.on('message', message => {
 
     //Limited Chinese New Year Commmand
     if(message.content.startsWith(pf + 'china')) {
-        let msg = ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:" + "\n" + "\n" + "**                   Happy Chinese New Year Fags**" + "\n" + "\n" + ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:"
+        let msg = ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:" + "\n" + "\n" + "**                   Happy Chinese New Year Kids**" + "\n" + "\n" + ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:"
         message.channel.sendMessage(msg)
     }
 
@@ -145,7 +146,7 @@ bot.on('message', message => {
         }
         else {
             if (message.author.id === '97798583402631168' || message.author.id === '200709999738093568') {
-                message.channel.sendMessage(info + 'Fuck off aidan')
+                message.channel.sendMessage(info + 'Nice try aidan')
             }
             else {
             message.channel.sendMessage(info + 'You do not have the required permissions, ' + message.author + '! *nice try*');
