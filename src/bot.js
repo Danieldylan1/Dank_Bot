@@ -1,8 +1,11 @@
 //Import Requirements
 const Discord = require('discord.js');
 const fs = require('fs');
-const path = require('path')
+const path = require('path');
+const GithubAPI = require('github');
 
+//Create Objects
+const bot = new Discord.Client()
 
 
 //Variables
@@ -10,18 +13,17 @@ let pf = "d!"
 let info = "**:notepad_spiral: INFO > **"
 let alert = "**:alarm_clock: TIMER > **"
 let warning = "**:warning: WARNING > **"
+let git = "**:octopus: + :cat: GIT > **"
 
 //Load Files
 let cfg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'config', 'config.json')), 'utf8')
 let helpFile = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'help.json')), 'utf8')
 
-//Create Objects
-const bot = new Discord.Client()
-
 //Bot Initiation
 bot.login(cfg.bot_token);
 
 //Functions
+
 //Random integer function for rps
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -69,6 +71,9 @@ bot.on('ready', () => {
 
 //Message Interactions
 bot.on('message', message => {
+    //Split message
+    let msgArray = message.content.split(' ');
+
     //Make sure bot does not break itself
     if (message.author.bot) return
 
@@ -79,8 +84,7 @@ bot.on('message', message => {
 
     //RPS command
     if(message.content.startsWith(pf + 'rps')) {
-        let userChoice = message.content.split(' ')
-        let rpsUser = userChoice[1]
+        let rpsUser = msgArray[1]
         if (rpsUser === undefined) {
             message.channel.sendMessage(warning + "There is no argument given!")
         }
@@ -97,12 +101,11 @@ bot.on('message', message => {
 
     //Timer command, takes input like so: !timer 6 walk the dog
     if(message.content.startsWith(pf + 'timer')) {
-        let timerChoice = message.content.split(' ')
-        let time = timerChoice[1]
-        let reminder = timerChoice.slice(2, timerChoice.length)
+        let time = msgArray[1]
+        let reminder = timerChoice.slice(2, msgArray.length)
         let timerMessage = message.author
-        if (time >= 120 || time.isInteger() === false) {
-            message.channel.sendMessage(info + "Wrong input! *yes daddy*")
+        if (time >= 120) {
+            message.channel.sendMessage(info + "Too long! *wink wink*")
 
         }
         else {
@@ -131,7 +134,18 @@ bot.on('message', message => {
         message.channel.sendMessage(msg)
     }
 
-    //
+    //Git interaction command
+    if(message.content.startsWith(pf + 'git')) {
+        let repoSplit = msgArray[3].split("/")
+        if(msgArray.length === 1) {
+            message.channel.sendMessage(git + "Please enter an argument: **" + pf + "git [status, latest, commits, repo]**")
+        }
+        else if(msgArray[1] === "repo") {
+            if(msgArray[2] === "collaborators") {
+                github.repos.getCollaborators(repoSplit[0], msgArray[3])
+            }
+        }
+    }
 
     //Kills the bot
     if(message.content.startsWith(pf + 'kill')) {
