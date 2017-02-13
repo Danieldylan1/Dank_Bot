@@ -3,7 +3,6 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const path = require('path');
 const GithubAPI = require('github');
-const path = require('path')
 const moment = require('moment')
 
 
@@ -139,12 +138,12 @@ bot.on('message', message => {
 
     //Git interaction command
     if(message.content.startsWith(pf + 'git')) {
-        let repoSplit = msgArray[3].split("/")
         if(msgArray.length === 1) {
             message.channel.sendMessage(git + "Please enter an argument: **" + pf + "git [status, latest, commits, repo]**")
         }
         else if(msgArray[1] === "repo") {
             if(msgArray[2] === "collaborators") {
+                let repoSplit = msgArray[3].split("/")
                 github.repos.getCollaborators(repoSplit[0], msgArray[3])
             }
         }
