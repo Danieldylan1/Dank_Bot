@@ -3,22 +3,22 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const path = require('path');
 const GithubAPI = require('github');
-const moment = require('moment')
+const moment = require('moment');
 
 
 //Variables
-let pf = "d!"
-let info = "**:notepad_spiral: INFO > **"
-let alert = "**:alarm_clock: TIMER > **"
-let warning = "**:warning: WARNING > **"
-let git = "**:octopus: + :cat: GIT > **"
+let pf = "d!";
+let info = "**:notepad_spiral: INFO > **";
+let alert = "**:alarm_clock: TIMER > **";
+let warning = "**:warning: WARNING > **";
+let git = "**:octopus: + :cat: GIT > **";
 
 //Load Files
-let cfg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'config', 'config.json')), 'utf8')
-let helpFile = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'help.json')), 'utf8')
+let cfg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'config', 'config.json')), 'utf8');
+let helpFile = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'help.json')), 'utf8');
 
 //Create Objects
-const bot = new Discord.Client()
+const bot = new Discord.Client();
 
 //Bot Initiation
 bot.login(cfg.bot_token);
@@ -32,43 +32,43 @@ function getRndInteger(min, max) {
 //Rock Paper Scissors function, works as you would expect a rock paper scissors game to work
 //userInput must be a string
 function rps(userInput) {
-    let botRpsChoice = ''
-    let botNum = getRndInteger(1,3)
+    let botRpsChoice = '';
+    let botNum = getRndInteger(1,3);
     user = userInput.toUpperCase();
 
     switch (botNum) {
     case 1:
-        botRpsChoice = "ROCK"
-        break
+        botRpsChoice = "ROCK";
+        break;
     case 2:
-        botRpsChoice = "PAPER"
-        break
+        botRpsChoice = "PAPER";
+        break;
     case 3:
-        botRpsChoice = "SCISSORS"
-        break
+        botRpsChoice = "SCISSORS";
+        break;
     }
     let rpsSay = "You played: " + user.toLowerCase() + ", the bot played " + botRpsChoice.toLowerCase() + ".";
     if (user === "ROCK") {
-        if (botRpsChoice === "ROCK") return ["LOLOL IT WAS A TIE XD, " + rpsSay]
-        if (botRpsChoice === "PAPER") return ["LMAO YOU GOT BEAT BY A BOT, " + rpsSay]
-        if (botRpsChoice === "SCISSORS") return ["WTF HOW DID YOU WIN, " + rpsSay]
+        if (botRpsChoice === "ROCK") return ["LOLOL IT WAS A TIE XD, " + rpsSay];
+        if (botRpsChoice === "PAPER") return ["LMAO YOU GOT BEAT BY A BOT, " + rpsSay];
+        if (botRpsChoice === "SCISSORS") return ["WTF HOW DID YOU WIN, " + rpsSay];
     }
     if (user === "PAPER") {
-        if (botRpsChoice === "ROCK") return ["WTF HOW DID YOU WIN, " + rpsSay]
-        if (botRpsChoice === "PAPER") return ["LOLOL IT WAS A TIE XD, " + rpsSay]
-        if (botRpsChoice === "SCISSORS") return ["LMAO YOU GOT BEAT BY A BOT, " + rpsSay]
+        if (botRpsChoice === "ROCK") return ["WTF HOW DID YOU WIN, " + rpsSay];
+        if (botRpsChoice === "PAPER") return ["LOLOL IT WAS A TIE XD, " + rpsSay];
+        if (botRpsChoice === "SCISSORS") return ["LMAO YOU GOT BEAT BY A BOT, " + rpsSay];
     }
     if (user === "SCISSORS") {
-        if (botRpsChoice === "ROCK") return ["LMAO YOU GOT BEAT BY A BOT, " + rpsSay]
-        if (botRpsChoice === "PAPER") return ["WTF HOW DID YOU WIN, " + rpsSay]
-        if (botRpsChoice === "SCISSORS") return ["LOLOL IT WAS A TIE XD, " + rpsSay]
+        if (botRpsChoice === "ROCK") return ["LMAO YOU GOT BEAT BY A BOT, " + rpsSay];
+        if (botRpsChoice === "PAPER") return ["WTF HOW DID YOU WIN, " + rpsSay];
+        if (botRpsChoice === "SCISSORS") return ["LOLOL IT WAS A TIE XD, " + rpsSay];
     }
 }
 
 //Start the bot!
 bot.on('ready', () => {
     console.log('Awaiting your orders!');
-    bot.user.setGame(cfg.version + " - By Jason L.")
+    bot.user.setGame(cfg.version + " - By Jason L.");
 });
 
 //Message Interactions
@@ -77,7 +77,7 @@ bot.on('message', message => {
     let msgArray = message.content.split(' ');
 
     //Make sure bot does not break itself
-    if (message.author.bot) return
+    if (message.author.bot) return;
 
     //Ding dong message to test
     if(message.content.startsWith(pf + 'ding')) {
@@ -86,12 +86,12 @@ bot.on('message', message => {
 
     //RPS command
     if(message.content.startsWith(pf + 'rps')) {
-        let rpsUser = msgArray[1]
+        let rpsUser = msgArray[1];
         if (rpsUser === undefined) {
-            message.channel.sendMessage(warning + "There is no argument given!")
+            message.channel.sendMessage(warning + "There is no argument given!");
         }
         else {
-        rpsUser = rpsUser.toUpperCase()
+        rpsUser = rpsUser.toUpperCase();
         if (rpsUser === 'ROCK' || rpsUser === 'PAPER' || rpsUser === 'SCISSORS') {
             let results = rps(rpsUser);
             message.channel.sendMessage(info + results);
@@ -103,47 +103,47 @@ bot.on('message', message => {
 
     //Timer command, takes input like so: !timer 6 walk the dog
     if(message.content.startsWith(pf + 'timer')) {
-        let time = msgArray[1]
-        let reminder = timerChoice.slice(2, msgArray.length)
-        let timerMessage = message.author
+        let time = msgArray[1];
+        let reminder = timerChoice.slice(2, msgArray.length);
+        let timerMessage = message.author;
         if (time >= 120) {
-            message.channel.sendMessage(info + "Too long! *wink wink*")
+            message.channel.sendMessage(info + "Too long! *wink wink*");
 
         }
         else {
         function remindMe (time, toRemind) {
             setTimeout(function() {
-                message.channel.sendMessage(alert + "You have to " + toRemind.join(' ') + ", " + timerMessage + "!")
+                message.channel.sendMessage(alert + "You have to " + toRemind.join(' ') + ", " + timerMessage + "!");
             }, (time * 1000));
-        };
-        remindMe(time, reminder)
-        message.channel.sendMessage(info + 'Timer Set!')
+        }
+        remindMe(time, reminder);
+        message.channel.sendMessage(info + 'Timer Set!');
         }
     }
 
     //Help command
     if(message.content.startsWith(pf + 'help')) {
-        let helpMsg = "Help for: **Commands**" + "\n"
+        let helpMsg = "Help for: **Commands**" + "\n";
         for(let key in helpFile) {
-            helpMsg += '**' + pf + key + '** ' + '> ' + helpFile[key].info.desc + '\n'
+            helpMsg += '**' + pf + key + '** ' + '> ' + helpFile[key].info.desc + '\n';
         }
-        message.channel.sendMessage(helpMsg)
+        message.channel.sendMessage(helpMsg);
     }
 
     //Limited Chinese New Year Commmand
     if(message.content.startsWith(pf + 'china')) {
-        let msg = ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:" + "\n" + "\n" + "**                   Happy Chinese New Year Kids**" + "\n" + "\n" + ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:"
-        message.channel.sendMessage(msg)
+        let msg = ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:" + "\n" + "\n" + "**                   Happy Chinese New Year Kids**" + "\n" + "\n" + ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:";
+        message.channel.sendMessage(msg);
     }
 
     //Git interaction command
     if(message.content.startsWith(pf + 'git')) {
         if(msgArray.length === 1) {
-            message.channel.sendMessage(git + "Please enter an argument: **" + pf + "git [status, latest, commits, repo]**")
+            message.channel.sendMessage(git + "Please enter an argument: **" + pf + "git [status, latest, commits, repo]**");
         }
         else if(msgArray[1] === "repo") {
             if(msgArray[2] === "collaborators") {
-                let repoSplit = msgArray[3].split("/")
+                let repoSplit = msgArray[3].split("/");
                 github.repos.getCollaborators(repoSplit[0], msgArray[3])
             }
         }
