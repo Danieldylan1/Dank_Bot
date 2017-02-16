@@ -11,7 +11,7 @@ let pf = "d!";
 let info = "**:notepad_spiral: INFO > **";
 let alert = "**:alarm_clock: TIMER > **";
 let warning = "**:warning: WARNING > **";
-let git = "**:octopus: + :cat: GIT > **";
+let git = "**:cat: + :octopus: GIT > **";
 
 //Load Files
 let cfg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'config', 'config.json')), 'utf8');
@@ -137,6 +137,7 @@ bot.on('message', message => {
     }
 
     //Git interaction command
+    //After complete, move to version 0.6.0
     if(message.content.startsWith(pf + 'git')) {
         if(msgArray.length === 1) {
             message.channel.sendMessage(git + "Please enter an argument: **" + pf + "git [status, latest, commits, repo]**");
