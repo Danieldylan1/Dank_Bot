@@ -139,31 +139,31 @@ bot.on('message', message => {
     }
     //Simple AI Interactions
     if(message.content.startsWith(pf + 'ai')) {
-        if(msgArray.length === 1) {
-          message.channel.sendMessage(ai + "Please enter an argument: **" + pf + "ai [on, off, settings]**");
+      message.channel.sendMessage(ai + "Hello!")
+      if(msgArray.length === 1) {
+        message.channel.sendMessage(ai + "Please enter an argument: **" + pf + "ai [on, off, settings]**");
+      }
+      else if(msgArray[1].toUpperCase() === "ON") {
+        if(aiStatus = true) {
+          message.channel.sendMessage(ai + "AI is already on!");
         }
-        else if(msgArray[1].toUpperCase() === "ON") {
-          if(aiStatus = true) {
-            message.channel.sendMessage(ai + "AI is already on!");
-          }
-          else{
-            aiStatus = true;
-          }
+        else{
+          aiStatus = true;
         }
-        else if(msgArray[1].toUpperCase() === "OFF") {
-          if(aiStatus === false) {
-              message.channel.sendMessage(ai + "AI is already off!");
-          }
-          else{
-            aiStatus = false;
-          }
+      }
+      else if(msgArray[1].toUpperCase() === "OFF") {
+        if(aiStatus === false) {
+            message.channel.sendMessage(ai + "AI is already off!");
         }
-        else if(msgArray[1].toUpperCase() === "SETTINGS") {
-
+        else{
+          aiStatus = false;
         }
-        else {
-          message.channel.sendMessage(ai + "Argument not recognized, use: **" + pf + "ai [on, off, settings]**");
-        }
+      }
+      else if(msgArray[1].toUpperCase() === "SETTINGS") {
+      }
+      else {
+        message.channel.sendMessage(ai + "Argument not recognized, use: **" + pf + "ai [on, off, settings]**");
+      }
     }
 
     //Git interaction command
