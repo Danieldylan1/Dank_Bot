@@ -149,6 +149,7 @@ bot.on('message', message => {
         }
         else{
           aiStatus = true;
+          message.channel.sendMessage(aiStart + "AI on!");
         }
       }
       else if(msgArray[1].toUpperCase() === "OFF") {
@@ -157,6 +158,7 @@ bot.on('message', message => {
         }
         else{
           aiStatus = false;
+          message.channel.sendMessage(aiStart + "AI off!");
         }
       }
       else if(msgArray[1].toUpperCase() === "SETTINGS") {
