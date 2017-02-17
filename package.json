@@ -19,6 +19,8 @@
   "dependencies": {
     "discord.js": "^10.0.1",
     "erlpack": "github:hammerandchisel/erlpack",
+    "github": "^8.2.1",
+    "moment": "^2.17.1",
     "uws": "^0.12.0"
   }
 }
