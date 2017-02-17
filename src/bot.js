@@ -166,6 +166,20 @@ bot.on('message', message => {
       else {
         message.channel.sendMessage(aiStart + "Argument not recognized, use: **" + pf + "ai [on, off, settings]**");
       }
+      while(aiStatus != false) {
+          rand = getRndInteger(1,3);
+          if(message.content.toUpperCase().includes("GOOD MORNING")) {
+              if(rand === 1) {
+                  message.channel.sendMessage(aiStart + "Good morning to you!");
+              }
+              if(rand === 2) {
+                  message.channel.sendMessage(aiStart + "Ugg, I need my coffee");
+              }
+              if(rand === 3) {
+                  message.channel.sendMessage(aiStart + "Mornin'");
+              }
+        }
+      }
     }
 
     //Git interaction command
