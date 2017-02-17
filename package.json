@@ -19,6 +19,7 @@
   "dependencies": {
     "discord.js": "^10.0.1",
     "erlpack": "github:hammerandchisel/erlpack",
+    "opusscript": "0.0.2",
     "uws": "^0.12.0"
   }
 }

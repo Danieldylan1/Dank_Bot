@@ -12,6 +12,8 @@ let info = "**:notepad_spiral: INFO > **";
 let alert = "**:alarm_clock: TIMER > **";
 let warning = "**:warning: WARNING > **";
 let git = "**:cat: + :octopus: GIT > **";
+let aiStart = "**:robot: AI > **";
+let aiStatus = false;
 
 //Load Files
 let cfg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'config', 'config.json')), 'utf8');
@@ -49,19 +51,19 @@ function rps(userInput) {
     }
     let rpsSay = "You played: " + user.toLowerCase() + ", the bot played " + botRpsChoice.toLowerCase() + ".";
     if (user === "ROCK") {
-        if (botRpsChoice === "ROCK") return ["LOLOL IT WAS A TIE XD, " + rpsSay];
-        if (botRpsChoice === "PAPER") return ["LMAO YOU GOT BEAT BY A BOT, " + rpsSay];
-        if (botRpsChoice === "SCISSORS") return ["WTF HOW DID YOU WIN, " + rpsSay];
+        if (botRpsChoice === "ROCK") return ["Tie!, " + rpsSay];
+        if (botRpsChoice === "PAPER") return ["I won!, " + rpsSay];
+        if (botRpsChoice === "SCISSORS") return ["You won!, " + rpsSay];
     }
     if (user === "PAPER") {
-        if (botRpsChoice === "ROCK") return ["WTF HOW DID YOU WIN, " + rpsSay];
-        if (botRpsChoice === "PAPER") return ["LOLOL IT WAS A TIE XD, " + rpsSay];
-        if (botRpsChoice === "SCISSORS") return ["LMAO YOU GOT BEAT BY A BOT, " + rpsSay];
+        if (botRpsChoice === "ROCK") return ["You won!, " + rpsSay];
+        if (botRpsChoice === "PAPER") return ["Tie!, " + rpsSay];
+        if (botRpsChoice === "SCISSORS") return ["I won!, " + rpsSay];
     }
     if (user === "SCISSORS") {
-        if (botRpsChoice === "ROCK") return ["LMAO YOU GOT BEAT BY A BOT, " + rpsSay];
-        if (botRpsChoice === "PAPER") return ["WTF HOW DID YOU WIN, " + rpsSay];
-        if (botRpsChoice === "SCISSORS") return ["LOLOL IT WAS A TIE XD, " + rpsSay];
+        if (botRpsChoice === "ROCK") return ["I won!, " + rpsSay];
+        if (botRpsChoice === "PAPER") return ["You won!, " + rpsSay];
+        if (botRpsChoice === "SCISSORS") return ["Tie!, " + rpsSay];
     }
 }
 
@@ -134,6 +136,34 @@ bot.on('message', message => {
     if(message.content.startsWith(pf + 'china')) {
         let msg = ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:" + "\n" + "\n" + "**                   Happy Chinese New Year Kids**" + "\n" + "\n" + ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:";
         message.channel.sendMessage(msg);
+    }
+    //Simple AI Interactions
+    if(message.content.startsWith(pf + 'ai')) {
+        if(msgArray.length === 1) {
+          message.channel.sendMessage(ai + "Please enter an argument: **" + pf + "ai [on, off, settings]**");
+        }
+        else if(msgArray[1].toUpperCase() === "ON") {
+          if(aiStatus = true) {
+            message.channel.sendMessage(ai + "AI is already on!");
+          }
+          else{
+            aiStatus = true;
+          }
+        }
+        else if(msgArray[1].toUpperCase() === "OFF") {
+          if(aiStatus === false) {
+              message.channel.sendMessage(ai + "AI is already off!");
+          }
+          else{
+            aiStatus = false;
+          }
+        }
+        else if(msgArray[1].toUpperCase() === "SETTINGS") {
+
+        }
+        else {
+          message.channel.sendMessage(ai + "Argument not recognized, use: **" + pf + "ai [on, off, settings]**");
+        }
     }
 
     //Git interaction command
