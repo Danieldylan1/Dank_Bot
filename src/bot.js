@@ -122,22 +122,6 @@ bot.on('message', message => {
         message.channel.sendMessage(info + 'Timer Set!');
         }
     }
-
-    //Help command
-    if(message.content.startsWith(pf + 'help')) {
-        let helpMsg = "Help for: **Commands**" + "\n";
-        for(let key in helpFile) {
-            helpMsg += '**' + pf + key + '** ' + '> ' + helpFile[key].info.desc + '\n';
-        }
-        message.channel.sendMessage(helpMsg);
-    }
-
-    //Limited Chinese New Year Commmand
-    if(message.content.startsWith(pf + 'china')) {
-        let msg = ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:" + "\n" + "\n" + "**                   Happy Chinese New Year Kids**" + "\n" + "\n" + ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:";
-        message.channel.sendMessage(msg);
-    }
-    //Simple AI Interactions
     if(message.content.startsWith(pf + 'ai')) {
       message.channel.sendMessage(ai + "Hello!")
       if(msgArray.length === 1) {
@@ -165,6 +149,22 @@ bot.on('message', message => {
         message.channel.sendMessage(ai + "Argument not recognized, use: **" + pf + "ai [on, off, settings]**");
       }
     }
+    //Help command
+    if(message.content.startsWith(pf + 'help')) {
+        let helpMsg = "Help for: **Commands**" + "\n";
+        for(let key in helpFile) {
+            helpMsg += '**' + pf + key + '** ' + '> ' + helpFile[key].info.desc + '\n';
+        }
+        message.channel.sendMessage(helpMsg);
+    }
+
+    //Limited Chinese New Year Commmand
+    if(message.content.startsWith(pf + 'china')) {
+        let msg = ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:" + "\n" + "\n" + "**                   Happy Chinese New Year Kids**" + "\n" + "\n" + ":flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn::flag_cn:";
+        message.channel.sendMessage(msg);
+    }
+    //Simple AI Interactions
+
 
     //Git interaction command
     //After complete, move to version 0.6.0
