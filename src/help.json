@@ -28,5 +28,11 @@
             "format":"rps",
             "desc": "Rock paper scissors, use !rps [rock, paper, or scissors]"
         }
+    },
+    "ai": {
+      "info": {
+            "format":"ai",
+            "desc":"Simple AI, responds to chat messages, use !ai [on, off, settings]"
+      }
     }
 }
